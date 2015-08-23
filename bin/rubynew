@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "rubynew"
+
+folder = ARGV[0]
+
+if folder.nil?
+  puts "Specify a folder name and I'll create it."
+else
+  project = Rubynew::Project.new(folder)
+  project.create
+  puts "\nCreated folder #{folder}."
+  puts "To use it, type: \n\tcd #{folder}\n\nand run tests with\n\n\trake test"
+end
