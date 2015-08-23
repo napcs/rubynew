@@ -1,6 +1,6 @@
 # Rubynew
 
-TODO: Command-line utility for creating new projects in Ruby. Creates a `lib` folder and a `test` folder, and a Rakefile set up to run tests with Minitest.
+A simple command-line utility for creating new projects in Ruby. Creates a `lib` folder and a `test` folder, and a Rakefile set up to run tests with Minitest.
 
 ## Installation
 
