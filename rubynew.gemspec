@@ -13,23 +13,19 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/napcs/rubynew"
   spec.license       = "MIT"
 
-  spec.files         = [
-                        "bin/rubynew",
-                        "lib/rubynew.rb",
-                        "lib/rubynew/version.rb",
-                        "lib/rubynew/project.rb",
-                        "template/Rakefile",
-                        "template/lib/app/version.rb",
-                        "template/lib/app.rb",
-                        "template/test/app_test.rb",
-                        "test/rubynew_test.rb",
-                        "Rakefile",
-                        "Gemfile",
-                        "README.md",
-                        "rubynew.gemspec",
-                        "LICENSE.txt"
+  spec.files = [
+    "bin/rubynew"
+    "Rakefile",
+    "Gemfile",
+    "README.md",
+    "rubynew.gemspec",
+    "LICENSE.txt"
+  ]
 
-                        ]
+  spec.files += Dir["lib/**/*"]
+  spec.files += Dir["template/**/*"] 
+  spec.files += Dir["test/**/*"] 
+
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
