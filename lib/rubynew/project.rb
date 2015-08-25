@@ -29,8 +29,8 @@ module Rubynew
         File.join(@name, "test", "#{@underscored_name}_test.rb")
       ].each { |file| render_template_to_file file, binding }
 
-
-
+      # install gem dependencies and create a lockfile
+      `bundle install --gemfile="#{File.join(@name, "Gemfile")}"`
     end
 
     private
