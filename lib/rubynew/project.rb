@@ -21,9 +21,11 @@ module Rubynew
       FileUtils.mv File.join(@name, "lib", "app"), File.join(@name, "lib", @underscored_name)
       FileUtils.mv File.join(@name, "lib", "app.rb"), File.join(@name, "lib", "#{@underscored_name}.rb")
       FileUtils.mv File.join(@name, "test", "app_test.rb"), File.join(@name, "test", "#{@underscored_name}_test.rb")
+      FileUtils.mv File.join(@name, "bin", "app"), File.join(@name, "bin", @underscored_name)
 
       # apply templates
       [
+        File.join(@name, "bin",  @underscored_name),
         File.join(@name, "lib",  "#{@underscored_name}.rb"),
         File.join(@name, "lib",  @underscored_name, "version.rb"),
         File.join(@name, "test", "#{@underscored_name}_test.rb")

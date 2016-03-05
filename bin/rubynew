@@ -11,4 +11,5 @@ else
   project.create
   puts "\nCreated folder #{folder}."
   puts "To use it, type: \n\tcd #{folder}\n\nand run tests with\n\n\trake test"
+  puts "Run the program with \n\truby bin/#{folder}."
 end

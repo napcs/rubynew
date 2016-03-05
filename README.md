@@ -1,6 +1,7 @@
 # Rubynew
 
-A simple command-line utility for creating new projects in Ruby. Creates a `lib` folder and a `test` folder, and a Rakefile set up to run tests with Minitest.
+A simple command-line utility for creating new projects in Ruby. Creates a `bin` folder and stub, a `lib` folder with a module
+and a `version.rb` file, and a `test` folder with a default test. It also creates a Rakefile set up to run tests with Minitest.
 
 ## Installation
 
@@ -20,9 +21,26 @@ Bundler works when creating a gem.
 $ rubynew tip_calculator
 ```
 
+It creates the following structure:
+
+```
+tip_calculator/
+├── Rakefile
+├── bin
+│   └── tip_calculator
+├── lib
+│   ├── tip_calculator
+│   │   └── version.rb
+│   └── tip_calculator.rb
+└── test
+    └── tip_calculator_test.rb
+```
+
+If you don't need the `bin` folder, simply delete it.
+
 ## Contributing
 
-Please contribute. I'm interested in discussing features, such as providing optiosn for alternative frameworks for testing. However, the default will always be what Ruby's default is. I want this to be simple for beginners, so the defaults will do whatever Ruby does by default. Right now that's Rake and Minitest.
+Please contribute. I'm interested in discussing features, such as providing options for alternative frameworks for testing. However, the default will always be what Ruby's default is. I want this to be simple for beginners, so the defaults will do whatever Ruby does by default. Right now that's Rake and Minitest.
 
 To contribute:
 
@@ -37,6 +55,11 @@ To contribute:
 MIT. See LICENSE.txt.
 
 ## History
+
+2016-03-05
+
+* Added `bin` folder and default bin file.
+* 1.0.0 version
 
 2015-08-23
 

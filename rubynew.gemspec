@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Brian Hogan"]
   spec.email         = ["brianhogan@napcs.com"]
   spec.summary       = %q{Generate new Ruby projects with tests.}
-  spec.description   = %q{Ruby project generator. Creates lib/ and test/ folders with a module and a Rakefile so you can quickly develop an app with tests.}
+  spec.description   = %q{Ruby project generator. Creates bin/, lib/ and test/ folders with a module and a Rakefile so you can quickly develop an app with tests.}
   spec.homepage      = "http://github.com/napcs/rubynew"
   spec.license       = "MIT"
 
@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
                         "lib/rubynew/version.rb",
                         "lib/rubynew/project.rb",
                         "template/Rakefile",
+                        "template/bin/app",
                         "template/lib/app/version.rb",
                         "template/lib/app.rb",
                         "template/test/app_test.rb",

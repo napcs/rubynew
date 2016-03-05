@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'rubynew/project'
 
+require 'pathname'
 # Not really a unit test - more of an integration test.
 class RubynewTest < MiniTest::Test
 
@@ -21,6 +22,7 @@ class RubynewTest < MiniTest::Test
     assert File.exist?(File.join(@folder, "lib", "#{@folder}.rb"))
     assert File.exist?(File.join(@folder, "lib", @folder, "version.rb"))
     assert File.exist?(File.join(@folder, "test", "#{@folder}_test.rb"))
+    assert File.exist?(File.join(@folder, "bin", "#{@folder}"))
 
   end
 
@@ -71,5 +73,14 @@ class RubynewTest < MiniTest::Test
 
     file = Pathname.new(File.join(@folder, "test", "#{@folder}_test.rb"))
     assert file.read.include?("class TmpprojectTest < Minitest::Test")
+  end
+
+  def test_has_bin
+
+    Rubynew::Project.new(@folder).create
+
+    file = Pathname.new(File.join(@folder, "bin", @folder))
+    assert file.read.include?("$LOAD_PATH")
+    assert file.read.include?("require 'tmpproject'")
   end
 end
