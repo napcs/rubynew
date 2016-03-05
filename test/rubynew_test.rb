@@ -19,6 +19,8 @@ class RubynewTest < MiniTest::Test
     Rubynew::Project.new(@folder).create
 
     assert File.exist?(File.join(@folder, "Rakefile"))
+    assert File.exist?(File.join(@folder, "Gemfile"))
+    assert File.exist?(File.join(@folder, "Gemfile.lock"))
     assert File.exist?(File.join(@folder, "lib", "#{@folder}.rb"))
     assert File.exist?(File.join(@folder, "lib", @folder, "version.rb"))
     assert File.exist?(File.join(@folder, "test", "#{@folder}_test.rb"))
