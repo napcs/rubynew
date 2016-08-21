@@ -28,10 +28,9 @@ module Rubynew
         File.join(@name, "bin",  @underscored_name),
         File.join(@name, "lib",  "#{@underscored_name}.rb"),
         File.join(@name, "lib",  @underscored_name, "version.rb"),
-        File.join(@name, "test", "#{@underscored_name}_test.rb")
+        File.join(@name, "test", "#{@underscored_name}_test.rb"),
+        File.join(@name, "README.md")
       ].each { |file| render_template_to_file file, binding }
-
-
 
     end
 

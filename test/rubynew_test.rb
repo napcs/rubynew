@@ -19,6 +19,9 @@ class RubynewTest < MiniTest::Test
     Rubynew::Project.new(@folder).create
 
     assert File.exist?(File.join(@folder, "Rakefile"))
+    assert File.exist?(File.join(@folder, "Gemfile"))
+    assert File.exist?(File.join(@folder, "README.md"))
+    assert File.exist?(File.join(@folder, "LICENSE"))
     assert File.exist?(File.join(@folder, "lib", "#{@folder}.rb"))
     assert File.exist?(File.join(@folder, "lib", @folder, "version.rb"))
     assert File.exist?(File.join(@folder, "test", "#{@folder}_test.rb"))
@@ -76,11 +79,22 @@ class RubynewTest < MiniTest::Test
   end
 
   def test_has_bin
-
     Rubynew::Project.new(@folder).create
 
     file = Pathname.new(File.join(@folder, "bin", @folder))
     assert file.read.include?("$LOAD_PATH")
     assert file.read.include?("require 'tmpproject'")
+  end
+
+  def test_bin_displays_name_and_version
+    Rubynew::Project.new(@folder).create
+    file = Pathname.new(File.join(@folder, "bin", @folder))
+    assert file.read.include?('tmpproject v#{Tmpproject::VERSION}')
+  end
+
+  def readme_has_project_name_as_header
+    Rubynew::Project.new(@folder).create
+    file = Pathname.new(File.join(@folder, "README.md"))
+    assert file.read.include?("# tmpproject\n")
   end
 end

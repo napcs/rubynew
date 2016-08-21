@@ -21,11 +21,14 @@ Bundler works when creating a gem.
 $ rubynew tip_calculator
 ```
 
-It creates the following structure:
+It creates the following structure and files:
 
 ```
 tip_calculator/
+├── Gemfile
 ├── Rakefile
+├── README.md
+├── LICENSE
 ├── bin
 │   └── tip_calculator
 ├── lib
@@ -33,6 +36,7 @@ tip_calculator/
 │   │   └── version.rb
 │   └── tip_calculator.rb
 └── test
+    └── test_helper.rb
     └── tip_calculator_test.rb
 ```
 
@@ -50,18 +54,27 @@ To contribute:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## License
-
-MIT. See LICENSE.txt.
 
 ## History
 
-2016-03-05
+2016-08-21 v1.1
+
+* Added `README.md`, `LICENSE`, and `Gemfile`
+* Added `test/test_helper.rb` for tests to use as their setup instead of directly loading `minitest/autorun`
+* Added `minitest/reporters` gem and added configuration to `test_helper` so test reports are colorized.
+* `bin` program now displays name and version
+* More detailed help message for `rubynew` when no options are passed
+* `rubynew` no longer crashes when you use a folder that already exists. This behavior is no longer allowed.
+
+
+2016-03-05 v1.0.0
 
 * Added `bin` folder and default bin file.
-* 1.0.0 version
 
 2015-08-23
 
 * Initial version
 
+## License
+
+MIT. See LICENSE.txt.

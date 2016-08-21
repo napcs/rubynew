@@ -4,12 +4,35 @@ require "rubynew"
 
 folder = ARGV[0]
 
+def banner
+  puts "rubynew v#{Rubynew::VERSION} (C) 2015-2016 Brian P Hogan"
+end
+
+banner
+
 if folder.nil?
-  puts "Specify a folder name and I'll create it."
+  puts %Q{
+Specify a folder and I'll create a Ruby project in that folder with
+
+* A lib/ folder with version.rb and a main Ruby file
+* A test/ folder with a test_helpr file and example test
+* A Rakefile
+* A Gemfile
+* A bin/ folder with everything wired up.
+
+Example:
+
+rubynew awesome_project
+  }
 else
-  project = Rubynew::Project.new(folder)
-  project.create
-  puts "\nCreated folder #{folder}."
-  puts "To use it, type: \n\tcd #{folder}\n\nand run tests with\n\n\trake test"
-  puts "Run the program with \n\truby bin/#{folder}."
+  if File.exists?(folder)
+    puts "This folder already exists. Please specify a folder that doesn't exist."
+  else
+    project = Rubynew::Project.new(folder)
+    project.create
+    puts "\nCreated new Ruby project in #{folder}.\n\n"
+    puts "To use this project, type: \n\n\tcd #{folder}\n\nInstall dependencies with\n\n\tbundle install\n\nand run tests with\n\n\trake test\n\n"
+    puts "Run the program with \n\n\truby bin/#{folder}\n\n"
+
+  end
 end

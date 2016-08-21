@@ -3,4 +3,8 @@
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
 require '<%= @underscored_name %>'
 
-puts "This is the <%= @underscored_name %> app."
+def banner
+  puts "<%= @underscored_name %> v#{<%= @constant_name %>::VERSION}."
+end
+
+banner
