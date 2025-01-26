@@ -1,12 +1,47 @@
 #!/usr/bin/env ruby
 
-require "rubynew"
+$LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
 
-folder = ARGV[0]
+require "rubynew"
+require "optparse"
+
+options = {
+  prefix_test: false
+  no_bin: false
+}
 
 def banner
   puts "rubynew v#{Rubynew::VERSION} (C) 2015-2025 Brian P Hogan"
 end
+
+# Define the option parser
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: rubynew [options] <folder>"
+
+  opts.on("-v", "--version", "Show version information") do
+    banner
+    exit
+  end
+
+  opts.on("--prefix-test", "Prefix test files instead of suffixing them (e.g., test/test_example.rb)") do
+    options[:prefix_test] = true
+  end
+
+  opts.on("--no-bin", "Skip creating the executable and bin/ folder") do
+    options[:no_bin] = true
+  end
+
+  opts.on("-h", "--help", "Show this help message") do
+    banner
+    puts opts
+    exit
+  end
+end
+
+# Parse command-line arguments
+parser.parse!
+
+folder = ARGV[0]
 
 banner
 
@@ -28,7 +63,7 @@ else
   if File.exist?(folder)
     puts "This folder already exists. Please specify a folder that doesn't exist."
   else
-    project = Rubynew::Project.new(folder)
+    project = Rubynew::Project.new(folder, options)
     project.create
     puts "\nCreated new Ruby project in #{folder}.\n\n"
     puts "To use this project, type: \n\n\tcd #{folder}\n\nInstall dependencies with\n\n\tbundle install\n\nand run tests with\n\n\trake test\n\n"

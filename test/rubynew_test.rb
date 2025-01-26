@@ -29,11 +29,17 @@ class RubynewTest < Minitest::Test
 
   end
 
+  def test_no_bin_option_skips_bin_creation
+    Rubynew::Project.new(@folder, {no_bin: true}).create
+    assert !File.exist?(File.join(@folder, "bin" ))
+  end
+
   def test_create_rakefile_with_test_task
     Rubynew::Project.new(@folder).create
 
     file = Pathname.new(File.join(@folder, "Rakefile"))
     assert file.read.include?("require \"minitest/test_task\"")
+    assert file.read.include?("test/**/*_test.rb")
   end
 
   def test_class_has_constant_name
@@ -76,6 +82,18 @@ class RubynewTest < Minitest::Test
 
     file = Pathname.new(File.join(@folder, "test", "#{@folder}_test.rb"))
     assert file.read.include?("class TmpprojectTest < Minitest::Test")
+  end
+
+  def test_prefixed_test_option_affects_test_name
+    Rubynew::Project.new(@folder, {prefix_test: true}).create
+    file = Pathname.new(File.join(@folder, "test", "test_#{@folder}.rb"))
+    assert file.read.include?("class TmpprojectTest < Minitest::Test")
+  end
+
+  def test_prefixed_test_option_affects_rakefile
+    Rubynew::Project.new(@folder, {prefix_test: true}).create
+    file = Pathname.new(File.join(@folder, "Rakefile"))
+    assert file.read.include?("test/**/test_*.rb")
   end
 
   def test_has_bin
