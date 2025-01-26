@@ -57,6 +57,10 @@ To contribute:
 
 ## History
 
+2025-01-25 v1.2
+* Replace deprecated methods to support modern Ruby.
+
+
 2016-08-21 v1.1
 
 * Added `README.md`, `LICENSE`, and `Gemfile`

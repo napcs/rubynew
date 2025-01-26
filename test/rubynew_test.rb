@@ -1,9 +1,9 @@
-require 'minitest/autorun'
 require 'rubynew/project'
 
+require "test_helper"
 require 'pathname'
 # Not really a unit test - more of an integration test.
-class RubynewTest < MiniTest::Test
+class RubynewTest < Minitest::Test
 
   def setup
     @folder = "tmpproject"
@@ -33,7 +33,7 @@ class RubynewTest < MiniTest::Test
     Rubynew::Project.new(@folder).create
 
     file = Pathname.new(File.join(@folder, "Rakefile"))
-    assert file.read.include?("require \"rake/testtask\"")
+    assert file.read.include?("require \"minitest/test_task\"")
   end
 
   def test_class_has_constant_name

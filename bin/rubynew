@@ -5,7 +5,7 @@ require "rubynew"
 folder = ARGV[0]
 
 def banner
-  puts "rubynew v#{Rubynew::VERSION} (C) 2015-2016 Brian P Hogan"
+  puts "rubynew v#{Rubynew::VERSION} (C) 2015-2025 Brian P Hogan"
 end
 
 banner
@@ -25,7 +25,7 @@ Example:
 rubynew awesome_project
   }
 else
-  if File.exists?(folder)
+  if File.exist?(folder)
     puts "This folder already exists. Please specify a folder that doesn't exist."
   else
     project = Rubynew::Project.new(folder)
@@ -33,6 +33,5 @@ else
     puts "\nCreated new Ruby project in #{folder}.\n\n"
     puts "To use this project, type: \n\n\tcd #{folder}\n\nInstall dependencies with\n\n\tbundle install\n\nand run tests with\n\n\trake test\n\n"
     puts "Run the program with \n\n\truby bin/#{folder}\n\n"
-
   end
 end

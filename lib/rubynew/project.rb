@@ -39,7 +39,7 @@ module Rubynew
     def render_template_to_file(template, context)
       t = File.read(template)
       File.open(template, "w") do |f|
-        f << ERB.new(t, nil, "-").result(context)
+        f << ERB.new(t, trim_mode:"-").result(context)
       end
     end
 

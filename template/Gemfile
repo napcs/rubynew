@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-gem 'minitest', group: :test
-gem 'minitest-reporters', group: :test
+group :test do
+  gem 'minitest'
+  gem 'minitest-reporters'
+end
 
